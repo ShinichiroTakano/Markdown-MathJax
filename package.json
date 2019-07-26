@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "marked": "^0.7.0",
+    "mathjax": "^2.7.5"
+  }
+}
