@@ -1,31 +1,25 @@
 <template>
 <div class="p-operation-area">
-  <div class="p-left-block">
-    <ul class="p-tab-items">
-      <li @click="selectTab(DEFAULT_TAB)"
-          :class="[selectedTab === DEFAULT_TAB ? 'is-active' : '',
-                  'p-tab-item']">Introduction</li>
-      <li v-for="dataSet in dataSets"
-          :key="dataSet.id"
-           @click="selectTab(dataSet.id)"
-          :class="[selectedTab === dataSet.id ? 'is-active' : '',
-                  'p-tab-item']">{{ dataSet.name }}</li>
-    </ul>
-    <div class="p-left-block-inner">
-      <div class="p-tab-contents">
-        <div class="p-tab-content" v-show="selectedTab === DEFAULT_TAB">
-          <div class="p-block-inner">
-            <h3>{{ descriptionTitle }}</h3>
-            <p id="operation-description" class="markdown-body" />
-          </div>
-        </div>
-        <div class="p-tab-content" v-if="selectedTab !== DEFAULT_TAB">
-          <div class="p-block-inner">
-            <div class="p-tab-content-description">
-              {{ dataSet.find(e => e.id === selectedTab).content }}
-            </div>
-          </div>
-        </div>
+  <div class="p-tab-items">
+    <span @click="selectTab(DEFAULT_TAB)"
+        :class="[selectedTab === DEFAULT_TAB ? 'is-active' : '',
+                'p-tab-item']">Introduction</span>
+    <span v-for="dataSet in dataSets"
+        :key="dataSet.id"
+          @click="selectTab(dataSet.id)"
+        :class="[selectedTab === dataSet.id ? 'is-active' : '',
+                'p-tab-item']">{{ dataSet.name }}</span>
+  </div>
+  <div class="p-left-block-inner">
+    <div class="p-tab-content" v-show="selectedTab === DEFAULT_TAB">
+      <div>
+        <h3>{{ title }}</h3>
+        <p id="operation-description" class="markdown-body" />
+      </div>
+    </div>
+    <div class="p-tab-content" v-if="selectedTab !== DEFAULT_TAB">
+      <div class="p-tab-content-description">
+        {{ dataSets.find(e => e.id === selectedTab).content }}
       </div>
     </div>
   </div>
@@ -37,11 +31,11 @@ import hljs from 'highlightjs';
 export default {
   name: 'operation-description',
   props: {
-    descriptionTitle: {
+    title: {
       type: String,
       required: true
     },
-    operationDescription: {
+    description: {
       type: String,
       required: true
     },
@@ -84,7 +78,7 @@ export default {
       }
     })
   
-    const text = this.operationDescription
+    const text = this.description
     console.log('text', text)
     
     // markedにlatexタグ食わせると&<>とかがエスケープされるのでPREFIX ~ SUFFIXで包んで退避
@@ -127,12 +121,8 @@ $color-user: #1F3964;
 $transition: 400ms ease-in-out;
 .p-operation-area {
   display: flex;
-  margin-top: 10px;
-  height: calc(100vh - 196px);
-}
-.p-left-block {
-  width: 34%;
-  margin-right: 1%;
+  flex-direction: column;
+  height: calc((100vh - 196px) / 10 * 6);
   background-color: #fff;
 }
 .p-tab-items {
@@ -140,6 +130,7 @@ $transition: 400ms ease-in-out;
   background-color: $color-user;
   border-radius: 8px 8px 0 0;
   padding-inline-start: 0;
+  height: 35px;
 }
 .p-tab-item {
   background-color: $color-user;
@@ -147,9 +138,10 @@ $transition: 400ms ease-in-out;
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 35px;
-  line-height: 35px;
   padding: 0 15px;
+  height: 35px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   border-right: 1px solid #fff;
   &:hover {
@@ -167,15 +159,11 @@ $transition: 400ms ease-in-out;
 }
 .p-left-block-inner {
   overflow-y: scroll;
-  height: calc(100vh - 231px);
   .markdown-body {
     margin-bottom: 15px;
   }
 }
 .p-tab-content {
   background-color: #fff;
-}
-.p-block-inner {
-  padding: 20px;
 }
 </style>

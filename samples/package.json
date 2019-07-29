@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "ace-builds": "^1.4.5",
     "core-js": "^2.6.5",
     "github-markdown-css": "^3.0.1",
     "highlightjs": "^9.12.0",
