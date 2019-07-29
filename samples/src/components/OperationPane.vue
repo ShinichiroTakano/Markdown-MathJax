@@ -10,7 +10,8 @@
       :instructions="instructions" />
     <operation-code-area
       id="code-area-position" />
-    <operation-console-area />
+    <operation-console-area
+      id="console-area-position" />
   </div>
 </template>
 <script>
@@ -90,7 +91,7 @@ export default {
 #operation-pane {
   display: grid;
   grid-template-rows: 60% 40%;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 34% 65%;
   height: calc(100vh - 196px);
   grid-gap: 1%;
   padding-right: 2%;
@@ -108,10 +109,11 @@ export default {
   grid-row: 1 / 2;
   grid-column: 2 / 3;
   position: relative;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+}
+#console-area-position {
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  overflow-y: scroll;
 }
 </style>
 

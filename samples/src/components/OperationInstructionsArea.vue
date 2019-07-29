@@ -1,8 +1,8 @@
 <template>
 <div class="operation-instructions-area">
-  <h2 class="p-block-ttl p-block-ttl-borderless">Instructions
+  <div class="p-block-ttl p-block-ttl-borderless">Instructions
     <div class="p-score">150Exp</div>
-  </h2>
+  </div>
   <ol>
     <li v-for="instruction in instructions" :key="instruction">
       {{ instruction }}

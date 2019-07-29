@@ -1,7 +1,12 @@
 <template>
   <div class="operation-code-area">
     <div class="p-block-ttl">Script.py</div>
-    <div id="operation-editor" />
+    <div><div id="operation-editor" /></div>
+    <div class="p-button-group">
+      <span class="c-button p-operation-button-reverse"><i class="fas fa-undo-alt"></i></span>
+      <span class="c-button p-operation-button-reverse c-button120"><i class="fas fa-laptop-code"></i>Run</span>
+      <span class="c-button p-operation-button"><i class="fas fa-paper-plane"></i>Submit</span>
+    </div>
   </div>
 </template>
 <script>
@@ -20,14 +25,15 @@ export default {
 </script>
 <style lang="scss" scoped>
 $color-user: #1F3964;
+$color-key: #F37726;
 .operation-code-area {
-  height: 60vh;
+
 }
 #operation-editor {
   position: absolute;
   top: 35px;
   right: 0;
-  bottom: 100px;
+  bottom: 35px;
   left: 0;
 }
 .p-block-ttl {
@@ -39,5 +45,34 @@ $color-user: #1F3964;
   display: flex;
   align-items: center;
   padding-left: 20px;
+}
+.p-button-group {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+}
+.c-button {
+  background-color: $color-key;
+  border-radius: 8px;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+  display: block;
+  padding: 0 15px;
+  font-weight: 500;
+  box-sizing: border-box;
+  margin-left: 30px;
+}
+.p-operation-button {
+  width: 120px;
+}
+.p-operation-button-reverse {
+  border: 1px solid $color-key;
+  background-color: #fff;
+  color: $color-key;
+}
+.c-button120{
+  width: 120px;
 }
 </style>
