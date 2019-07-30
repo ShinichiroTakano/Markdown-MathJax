@@ -20,21 +20,29 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      editor: null,
+      isPending: false
+    }
+  },
   mounted() {
-    const editor = ace.edit("operation-editor", {
+    this.editor = ace.edit("operation-editor", {
       mode: "ace/mode/python",
       theme: "ace/theme/tomorrow",
     })
+    this.editor.setValue(this.questionSourceCode)
   },
   methods: {
     resetCode() {
 
     },
     runCode() {
+      const currentCode = this.editor.getValue()
+      console.log('currentCode', currentCode)
 
     },
     submitCode() {
-
     }
   }
 }
