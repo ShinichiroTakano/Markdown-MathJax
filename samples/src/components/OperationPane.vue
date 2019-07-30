@@ -7,9 +7,18 @@
       :dataSets="dataSets" />
     <operation-instructions-area
       id="instructions-area-position"
-      :instructions="instructions" />
+      :instructions="instructions"
+      :exp="exp"
+      :choices="choices"
+      :hints="hints"
+      :selection="selection" />
     <operation-code-area
-      id="code-area-position" />
+      id="code-area-position"
+      :questionSourceCode="questionSourceCode"
+      :questId="questId"
+      :step="step"
+      :missionStep="missionStep"
+      :tascStep="tascStep" />
     <operation-console-area
       id="console-area-position" />
   </div>
@@ -57,7 +66,7 @@ export default {
       required: true
     },
     answerTip: {
-      type: Number,
+      type: String,
       required: true
     },
     exp: {
