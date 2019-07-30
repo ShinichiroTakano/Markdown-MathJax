@@ -1,26 +1,26 @@
 <template>
   <div id="operation-pane">
     <operation-description-area
-      id="description-area-position"
+      id="descriptionArea"
       :title="title"
       :description="description"
       :dataSets="dataSets" />
-    <operation-instructions-area
-      id="instructions-area-position"
+    <operation-instructionsArea
+      id="instructionsArea"
       :instructions="instructions"
       :exp="exp"
       :choices="choices"
       :hints="hints"
       :selection="selection" />
-    <operation-code-area
-      id="code-area-position"
+    <operation-codeArea
+      id="codeArea"
       :questionSourceCode="questionSourceCode"
       :questId="questId"
       :step="step"
       :missionStep="missionStep"
       :tascStep="tascStep" />
     <operation-console-area
-      id="console-area-position" />
+      id="consoleArea" />
   </div>
 </template>
 <script>
@@ -99,29 +99,30 @@ export default {
 <style lang="scss" scoped>
 #operation-pane {
   display: grid;
-  grid-template-rows: 60% 40%;
-  grid-template-columns: 34% 65%;
+  grid-template-rows: 60% 1% 3% 1% 35%;
+  grid-template-columns: 34% 1% 65%;
+  grid-template-areas: 
+            "descriptionArea       verticalBorder codeArea"
+            "leftHorizontalBorder  verticalBorder codeArea"
+            "instructionsArea      verticalBorder codeArea"
+            "instructionsArea      verticalBorder rightHorizontalBorder"
+            "instructionsArea      verticalBorder consoleArea";
   height: calc(100vh - 196px);
-  grid-gap: 1%;
   padding-right: 2%;
   padding-left: 2%;
 }
-#description-area-position {
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
+#description-area {
+  grid-area: descriptionArea;
 }
-#instructions-area-position {
-  grid-row: 2 / 3;
-  grid-column: 1 / 2;
+#instructionsArea {
+  grid-area: instructionsArea;
 }
-#code-area-position {
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
+#codeArea {
+  grid-area: codeArea;
   position: relative;
 }
-#console-area-position {
-  grid-row: 2 / 3;
-  grid-column: 2 / 3;
+#consoleArea {
+  grid-area: consoleArea;
   overflow-y: scroll;
 }
 </style>
