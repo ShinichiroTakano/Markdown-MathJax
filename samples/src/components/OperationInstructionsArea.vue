@@ -1,10 +1,12 @@
 <template>
 <div class="operation-instructions-area">
-  <div class="p-block-ttl p-block-ttl-borderless">Instructions
+  <div class="instruction-title">Instructions
     <div class="p-score">150Exp</div>
   </div>
   <ol>
-    <li v-for="instruction in instructions" :key="instruction">
+    <li v-for="instruction in instructions" 
+        :key="instruction"
+        class="instruction-sentence">
       {{ instruction }}
     </li>
   </ol>
@@ -39,26 +41,26 @@ $transition: 400ms ease-in-out;
 .operation-instructions-area {
   background-color: #fff;
 }
-.p-score {
-  float: right;
-  background-color: #fff;
-  color: $color-user;
-  height: 25px;
-  margin: 5px;
-  padding: 0 10px;
-  border-radius: 15px;
-}
-.p-block-ttl {
+.instruction-title {
   background-color: $color-user;
   color: #fff;
   height: 35px;
-  line-height: 35px;
   padding-left: 20px;
   font-weight: normal;
-  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
 }
-.p-block-ttl-borderless {
-  border-radius: 0;
+.p-score {
+  background-color: #fff;
+  color: $color-user;
+  height: 25px;
+  padding: 0 10px;
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: 20px;
+}
+.instruction-sentence:not(:first-child) {
+  margin-top: 10px;
 }
 .p-hint-button {
   display: none;
