@@ -10,11 +10,11 @@
       :missionStep="1"
       :tascStep="1"
       :questionSourceCode="sampleCode"
-      :answerTip="aaaaaaaaaaaaaaa"
+      :answerTip="'aaaaaaaaaaaaaaa'"
       :exp="150"
       :choices="[{id: 1, sentence: 'aaaaa'},{id: 2, sentence: 'bbbbb'},{id: 3, sentence: 'ccccc'},]"
       :hints="['あああああ', 'いいいいい', 'ううううう']"
-      :selection="{selection: false, multiple: false}"/>
+      :selection="{selection: false, multiple: false}" />
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
 <div class="operation-instructions-area">
   <div class="instruction-title">Instructions
-    <div class="p-score">150Exp</div>
+    <div class="p-score">{{exp}}Exp</div>
   </div>
   <ol>
     <li v-for="instruction in instructions" 
@@ -11,9 +11,11 @@
     </li>
   </ol>
   <input id="hint-check" class="p-hint-button" type="checkbox" v-model="hintCheck">
-  <label class="p-hint-label" for="hint-check"><i class="fas fa-lightbulb"></i>Hint</label>
+  <label class="p-hint-label" for="hint-check"><i class="fas fa-lightbulb hint-label"></i>Hint</label>
   <div class="p-hint-content" v-if="hintCheck.length > 0">
-    <p>ヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒントヒント</p>
+    <ul>
+      <li v-for="hint in hints" :key="hint" class="hint-sentence">{{hint}}</li>
+    </ul>
   </div>
 </div>
 </template>
@@ -23,6 +25,22 @@ export default {
   props: {
     instructions: {
       type: Array,
+      required: true
+    },
+    exp: {
+      type: Number,
+      required: true
+    },
+    choices: {
+      type: Array,
+      required: true
+    },
+    hints: {
+      type: Array,
+      required: true
+    },
+    selection: {
+      type: Object,
       required: true
     }
   },
@@ -66,17 +84,23 @@ $transition: 400ms ease-in-out;
   display: none;
 }
 .p-hint-label {
-  margin-top: 40px;
+  margin-top: 20px;
   color: $color-key;
   display: block;
   &:hover {
     cursor: pointer;
   }
 }
+.hint-label {
+  margin-right: 10px;
+}
 .p-hint-content {
-  padding: 0 10px;
   transition: .5s;
   background-color: $color-key-light;
   border-radius: 6px;
+  padding: 5px;
+}
+.hint-sentence:not(:first-child) {
+  margin-top: 10px;
 }
 </style>

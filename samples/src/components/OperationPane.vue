@@ -69,15 +69,15 @@ export default {
       type: String,
       required: true
     },
+    instructions: {
+      type: Array,
+      required: true
+    },
     exp: {
       type: Number,
       required: true
     },
     choices: {
-      type: Array,
-      required: true
-    },
-    instructions: {
       type: Array,
       required: true
     },
