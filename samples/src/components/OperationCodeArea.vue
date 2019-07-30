@@ -39,8 +39,6 @@ export default {
     },
     runCode() {
       const currentCode = this.editor.getValue()
-      console.log('currentCode', currentCode)
-
     },
     submitCode() {
     }
